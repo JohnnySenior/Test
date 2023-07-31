@@ -1,10 +1,9 @@
 ﻿Console.WriteLine();
-Console.WriteLine("This console application calculates 'Sum of Array'");
+Console.WriteLine("This console application finds 'Maximum Element of Array'");
 Console.WriteLine();
 
 Console.Write("Enter the size of Array: ");
 int sizeOfArray = int.Parse(Console.ReadLine());
-int sumOfArray = 0;
 
 int[] myArray = new int[sizeOfArray];
 
@@ -23,9 +22,4 @@ for(int iteration = 0; iteration < sizeOfArray; iteration++)
 
 Console.WriteLine();
 
-for(int iteration = 0; iteration < sizeOfArray; iteration++)
-{
-    sumOfArray += myArray[iteration];
-}
-
-Console.WriteLine($"sumOfArray = {sumOfArray}");
+Console.WriteLine($"Max Element = {myArray.Max()}");
