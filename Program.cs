@@ -1,25 +1,37 @@
-﻿Console.WriteLine();
-Console.WriteLine("This console application finds 'Maximum Element of Array'");
-Console.WriteLine();
+﻿using System;
 
-Console.Write("Enter the size of Array: ");
-int sizeOfArray = int.Parse(Console.ReadLine());
-
-int[] myArray = new int[sizeOfArray];
-
-for(int iteration = 0; iteration < sizeOfArray; iteration++)
+class Program
 {
-    Console.Write($"myArray[{iteration}] = ");
-    myArray[iteration] = int.Parse(Console.ReadLine());
+    static void Main()
+    {
+        Console.Write("Enter the size of Array: ");
+        int sizeOfArray = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter elements of Array: ");
+        int[] myArray = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+        
+        Console.Write("Enter rotate time of Array: ");
+        int rotateTime = int.Parse(Console.ReadLine());
+
+        // Handle edge cases
+        if (rotateTime > sizeOfArray)
+            rotateTime %= sizeOfArray;
+
+        // Create a new array to store the rotated elements
+        int[] rotatedArray = new int[sizeOfArray];
+
+        // Perform the rotations and store elements in the rotatedArray
+        for (int iteration = 0; iteration < sizeOfArray; iteration++)
+        {
+            int newPosition = (iteration + rotateTime) % sizeOfArray;
+            rotatedArray[newPosition] = myArray[iteration];
+        }
+
+        // Output the rotated array
+        for (int iteration = 0; iteration < sizeOfArray; iteration++)
+        {
+            Console.Write(rotatedArray[iteration] + " ");
+        }
+        Console.WriteLine();
+    }
 }
-
-Console.Write("Elements of myArray: ");
-
-for(int iteration = 0; iteration < sizeOfArray; iteration++)
-{
-    Console.Write($"{myArray[iteration]} ");
-}
-
-Console.WriteLine();
-
-Console.WriteLine($"Max Element = {myArray.Max()}");
